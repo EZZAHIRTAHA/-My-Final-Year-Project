@@ -1,0 +1,6 @@
+export {default as Home} from './Home.jsx'
+export {default as Cart} from './Cart.jsx'
+export {default as Login} from './Login.jsx'
+export {default as Register} from './Register.jsx'
+export {default as PaymentSuccess} from './PaymentSuccess.jsx'
+export {default as Menu} from './Menu.jsx'
