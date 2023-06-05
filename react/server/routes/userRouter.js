@@ -1,14 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const router = express.Router();
-const User = require('../models/userModel');
-const { register, login, getUser } = require('../controllers/userController');
-const { authenticate } = require('../middlewares/authenticate'); // Import the authenticate middleware
+const express = require('express')
+const router = express.Router()
+const {
+  registerUser,
+  loginUser,
+  getMe,
+} = require('../controllers/userController')
+const { protect } = require('../middlewares/authMiddleware')
 
-router.use(bodyParser.json());
+router.post('/', registerUser)
+router.post('/login', loginUser)
+router.get('/me', protect, getMe)
 
-router.post('/create-user', register);
-router.post('/login', login);
-router.get('/user', authenticate, getUser); // Apply authenticate middleware to the getUser route
-
-module.exports = router;
+module.exports = router

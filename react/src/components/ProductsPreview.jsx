@@ -62,7 +62,7 @@ const ProductsPreviw = () => {
             ))
           }
         
-        </Carousel> : <div className='flex justify-center '>  <BiLoaderAlt className='text-center  text-yellow-800 text-9xl animate-spin font-light' /></div>}
+        </Carousel> : <div className='flex justify-center '>  <BiLoaderAlt className='text-center font-light text-yellow-800 text-9xl transition duration-1000 animate-spin'/></div>}
     </div>
   )
 }
