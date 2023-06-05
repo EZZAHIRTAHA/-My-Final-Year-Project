@@ -84,7 +84,7 @@ app.listen(PORT, () => {
 });
 
 app.use('/api/', productRouter);
-app.use('/api', userRouter);
+app.use('/auth/', userRouter);
 
 app.post('/create-payment-intent', async (req, res) => {
   try {

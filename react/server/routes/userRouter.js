@@ -2,23 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
 const User = require('../models/userModel');
+const { register, login, getUser } = require('../controllers/userController');
+const { authenticate } = require('../middlewares/authenticate'); // Import the authenticate middleware
 
 router.use(bodyParser.json());
 
-router.post('/create-user', (req, res) => {
-    const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        // password handled by firebase
-        _id: req.body._id,
-    });
-    user.save((err) => {
-        if (err) {
-            res.status(400).send({ error: err });
-        } else {
-            res.status(200).send({ data: user });
-        }
-    });
-});
+router.post('/create-user', register);
+router.post('/login', login);
+router.get('/user', authenticate, getUser); // Apply authenticate middleware to the getUser route
 
 module.exports = router;
