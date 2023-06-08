@@ -9,19 +9,19 @@ import Footer from '../components/Footer'
 const Navigation = () => {
 
     const productsInCart = useSelector(cartProducts)
-
+    const {user} = useSelector(state=> state)
     return(
         <BrowserRouter>
             <Header cartCount= { productsInCart ? productsInCart.length : 0}/>
-            <Routes>
+             <Routes>
                 <Route path='/' element={<Home/>} />
-                <Route path='login' element={<Login/>} />
-                <Route path='register' element={<Register/>} />
-                <Route path='menu' element={<Menu/>} />
-                <Route path='cart' element={<Cart/>} />
-                <Route path='payment-success' element={<PaymentSuccess/>} />
+                <Route path='/login' element={<Login/>} />
+                <Route path='/register' element={<Register/>} />
+                <Route path='/menu' element={<Menu/>} />
+                <Route path='/cart' element={<Cart/>} />
+                <Route path='/payment-success' element={<PaymentSuccess/>} />
+                <Route path='/products/:id' element={<SingleProduct/>}/>
                 <Route path='*' element={<NotFound />} />
-                <Route path='products/:id' element={<SingleProduct/>}/>
             </Routes>
             <Footer/>
         </BrowserRouter>
