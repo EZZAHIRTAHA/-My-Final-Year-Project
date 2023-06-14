@@ -4,7 +4,7 @@ const About = () => {
     <section id="about" className="bg-black  capitalize  scale-up-center text-white">
       <div className="p-12 md:p-24 grid grid-cols-1 md:grid-cols-2 items-center">
 
-          <img src="./assets/about.png" alt="about" className="md:w-full w-96  md:h-full h-96 p-5 hidden md:block transition duration-300 hover:scale-105" />
+          <img src="./assets/about.png" alt="about" className=" w-full  h-full p-5 hidden md:block transition duration-300 hover:scale-105" />
       
         <div className="text-center md:text-left mb-8 md:mb-0 md:pr-8 p-5">
           <h2 className="md:text-6xl text-4xl tracking-wider font-medium leading-tight mb-4 text-[#d7bf74]">About us</h2>

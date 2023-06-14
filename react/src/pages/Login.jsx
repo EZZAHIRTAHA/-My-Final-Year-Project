@@ -11,6 +11,7 @@ function Login() {
     email: '',
     password: '',
   })
+  const [loggedInMessage, setLoggedInMessage] = useState()
 
   const { email, password } = formData
 
@@ -19,14 +20,13 @@ function Login() {
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(state => state)
 
+  const userIn = localStorage.getItem('user')
+
   useEffect(() => {
     if (isError) {
       toast.error(message)
     }
 
-    if (isSuccess || user) {
-      navigate('/')
-    }
 
     dispatch(reset())
   }, [user, isError, isSuccess, message, navigate, dispatch])
@@ -47,6 +47,13 @@ function Login() {
     }
 
     dispatch(login(userData))
+    
+      navigate('/')
+      setLoggedInMessage(true)
+      setTimeout(() => {
+        setShowLogoutMessage(false);
+      }, 5000);
+    
   }
 
   if (isLoading) {
@@ -55,19 +62,14 @@ function Login() {
 
   return (
     <>
-      <section className='heading'>
-        <h1>
-          <FaSignInAlt /> Login
-        </h1>
-        <p>Login and start setting goals</p>
-      </section>
-
-      <section className='form'>
-        <form onSubmit={onSubmit}>
-          <div className='form-group'>
+      <section className='form flex w-full justify-center items-center'>
+      {loggedInMessage && <div className=" p-4 mb-4 text-md scale-up-center text-white rounded-lg text-center bg-red-50 dark:bg-gray-800 " role="alert">
+  <span class="font-semibold ">Login successful. Welcome to your account!</span></div>}
+        <form onSubmit={onSubmit} className='scale-up-center flex  bg-gray-950 md:max-w-[50%] w-full rounded-[15px] border-[1px] flex-col justify-center items-center scale-up-center p-5 my-5 border-yellow-500'>
+          <div className='form-group mb-6'>
             <input
               type='email'
-              className='form-control'
+              className='shadow-sm bg-none border border-yellow-300 text-yellow-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block md:w-[300px] w-full  p-2.5 dark:bg-black dark:border-yellow-600 dark:placeholder-white  dark:text-white  dark:focus:ring-yellow-500 transition duration-300 dark:focus:border-yellow-500 dark:shadow-sm-light'
               id='email'
               name='email'
               value={email}
@@ -75,10 +77,10 @@ function Login() {
               onChange={onChange}
             />
           </div>
-          <div className='form-group'>
+          <div className='form-group mb-6'>
             <input
               type='password'
-              className='form-control'
+              className='shadow-sm bg-none border border-yellow-300 text-yellow-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block md:w-[300px] w-full  p-2.5 dark:bg-black dark:border-yellow-600 dark:placeholder-white  dark:text-white  dark:focus:ring-yellow-500 transition duration-300 dark:focus:border-yellow-500 dark:shadow-sm-light'
               id='password'
               name='password'
               value={password}
@@ -87,8 +89,8 @@ function Login() {
             />
           </div>
 
-          <div className='form-group'>
-            <button type='submit' className='btn btn-block bg-slate-50'>
+          <div className='form-group mb-6'>
+            <button type='submit' className='text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[200px] dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800'>
               Submit
             </button>
           </div>
