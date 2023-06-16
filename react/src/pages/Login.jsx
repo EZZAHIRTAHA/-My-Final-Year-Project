@@ -75,7 +75,9 @@ function Login() {
       {loggedInMessage && <div className=" p-5 mx-60 border-[1px] border-yellow-300 text-md scale-up-center text-white rounded-lg text-center bg-red-50 dark:bg-gray-800  " role="alert">
   <span class="font-semibold ">Login successful. Welcome to your account!</span></div>}
       <section className='form flex w-full justify-center items-center'>
-        <form onSubmit={onSubmit} className='scale-up-center flex  bg-gray-950 md:max-w-[50%] w-full rounded-[15px] border-[1px] flex-col justify-center items-center scale-up-center p-5 my-5 border-yellow-500'>
+        
+        <form onSubmit={onSubmit} className='scale-up-center flex  bg-gray-950 md:max-w-[50%] w-full rounded-[15px] border-[1px] flex-col justify-center items-center scale-up-center p-5 mb-5 border-yellow-500 tracking-wider '>
+          <h1 className='text-xl capitalize text-yellow-300 py-2 mb-3'>log in</h1>
           <div className='form-group mb-6'>
             <input
               type='email'
@@ -105,8 +107,8 @@ function Login() {
             placeholder='Enter password'
             onChange={onChange}
           /> }
-          {formData.password &&<div onClick={toggle} className="absolute  right-52 transform -translate-y-1/2">
-            { showPassword ? <BiHide className='text-white' /> : <BiShowAlt className='text-white'/> }
+          {formData.password &&<div onClick={toggle} className="absolute cursor-pointer  right-52 transform -translate-y-1/2">
+            { showPassword ? <BiHide className='text-white absolute top-[-18px] text-xl right-1 transform -translate-y-1/2' /> : <BiShowAlt className='text-white absolute top-[-18px] text-xl right-1 transform -translate-y-1/2'/> }
           </div>}
           </div>
 

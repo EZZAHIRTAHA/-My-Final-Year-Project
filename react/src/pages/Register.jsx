@@ -20,10 +20,14 @@ const Register = () => {
     password2: '',
   });
   const [showAlert, setShowAlert] = useState(false);
-
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state
   );
+  const [showPassword, setShowPassword] = useState(false)
+
+  const toggle = () => {
+    setShowPassword(showPassword => !showPassword)
+  }
 
   useEffect(() => {
     if (isError) {
@@ -33,12 +37,15 @@ const Register = () => {
     dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
+
   const { name, email, password, password2 } = formData;
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((data) => ({ ...data, [name]: value }));
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,6 +65,7 @@ const Register = () => {
     }
   };
 
+
   useEffect(() => {
     let timeout;
     if (showAlert) {
@@ -74,6 +82,7 @@ const Register = () => {
   if (isLoading) {
     return <BiLoaderAlt />;
   }
+
 
   return (
     <section className="flex w-full justify-center items-center">
@@ -113,7 +122,7 @@ const Register = () => {
             type="email"
             id="email"
             className="shadow-sm bg-none border border-yellow-300 text-yellow-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block md:w-[300px] w-full  p-2.5 dark:bg-black dark:border-yellow-600 dark:placeholder-white  dark:text-white  dark:focus:ring-yellow-500 transition duration-300 dark:focus:border-yellow-500 dark:shadow-sm-light"
-            placeholder="name@flowbite.com"
+            placeholder="ezzahir.taha@gmail.com"
             value={formData.email}
             onChange={handleChange}
             name="email"
@@ -126,14 +135,25 @@ const Register = () => {
           >
             Your password
           </label>
-          <input
-            type="password"
+          {showPassword ? <input
+            type="text"
             id="password"
             className="shadow-sm bg-yellow-50 border border-white-300 text-yellow-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block md:w-[300px] w-full p-2.5 dark:bg-black dark:border-yellow-600 dark:placeholder-yellow-400 dark:text-white dark:focus:ring-yellow-500 transition duration-300 dark:focus:border-yellow-500 dark:shadow-sm-light"
             value={formData.password}
             onChange={handleChange}
             name="password"
-          />
+          /> :<input
+          type="password"
+          id="password"
+          className="shadow-sm bg-yellow-50 border border-white-300 text-yellow-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block md:w-[300px] w-full p-2.5 dark:bg-black dark:border-yellow-600 dark:placeholder-yellow-400 dark:text-white dark:focus:ring-yellow-500 transition duration-300 dark:focus:border-yellow-500 dark:shadow-sm-light"
+          value={formData.password}
+          onChange={handleChange}
+          name="password"
+        /> }
+        {formData.password && <div onClick={toggle} className="absolute right-[11rem] top-[343px] transform -translate-y-1/2 cursor-pointer">
+         {showPassword ? <BiHide className='text-white text-xl'/> : <BiShowAlt className='text-white text-xl'/> }
+        </div>}
+        
         </div>
         <div className="mb-6">
           <label
@@ -142,14 +162,22 @@ const Register = () => {
           >
             Repeat password
           </label>
-          <input
-            type="password"
+          {showPassword ? <input
+            type="text"
             id="repeat-password"
             className="shadow-sm bg-yellow-50 border border-yellow-300 text-yellow-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block  p-2.5 dark:bg-black dark:border-yellow-600 dark:placeholder-yellow-400 dark:text-white dark:focus:ring-yellow-500 transition duration-300 dark:focus:border-yellow-500 md:w-[300px] w-full  dark:shadow-sm-light"
             value={formData.password2}
             onChange={handleChange}
             name="password2"
-          />
+          /> : <input
+          type="password"
+          id="repeat-password"
+          className="shadow-sm bg-yellow-50 border border-yellow-300 text-yellow-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block  p-2.5 dark:bg-black dark:border-yellow-600 dark:placeholder-yellow-400 dark:text-white dark:focus:ring-yellow-500 transition duration-300 dark:focus:border-yellow-500 md:w-[300px] w-full  dark:shadow-sm-light"
+          value={formData.password2}
+          onChange={handleChange}
+          name="password2"
+        />}
+        
         </div>
 
         <button
