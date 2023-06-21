@@ -8,7 +8,7 @@ const About = () => {
       
         <div className="text-center md:text-left mb-8 md:mb-0 md:pr-8 p-5">
           <h2 className="md:text-6xl text-4xl tracking-wider font-medium leading-tight mb-4 text-[#d7bf74]">About us</h2>
-          <p className="font-normal text-dim-white text-lg tracking-wide leading-[1.5] w-full">
+          <p className="font-normal text-dim-white text-lg tracking-wide leading-[1.5] w-full text-justify">
             At <span className="text-[#d7bf74]">Taha's Food</span>, we are passionate about serving delicious, high-quality
             food that satisfies our customers' cravings. Our team of experienced chefs prepares each dish with care and
             precision, using only the freshest ingredients to ensure that every bite is packed with flavor. We believe
