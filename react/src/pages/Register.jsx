@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { app } from '../firebase-config';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
@@ -61,7 +58,7 @@ const Register = () => {
 
       dispatch(register(userData));
       setShowAlert(true); // Show the alert after successful registration
-      navigate('/login');
+      navigate('/');
     }
   };
 
