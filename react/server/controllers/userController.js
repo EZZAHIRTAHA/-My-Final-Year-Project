@@ -5,9 +5,6 @@ const { validationResult } = require('express-validator');
 const User = require('../models/userModel');
 require('dotenv').config();
 
-// Register new user
-// POST /api/users
-// Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -49,9 +46,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-// Authenticate a user
-// POST /api/users/login
-// Public
+
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -77,9 +72,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// Get user data
-// GET /api/users/me
-// Private
+
 const getMe = asyncHandler(async (req, res) => {
   res.status(200).json(req.user);
 });
@@ -91,12 +84,39 @@ const generateToken = (id) => {
   });
 };
 
+const getAllUsers = asyncHandler(async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1; // Get the page number from the request query parameter
+    const limit = parseInt(req.query.limit) || 10; // Set the limit of users per page (default: 10)
+
+    const skip = (page - 1) * limit; // Calculate the number of documents to skip
+
+    const totalUsers = await User.countDocuments(); // Get the total number of users
+
+    const users = await User.find()
+      .skip(skip)
+      .limit(limit);
+
+    res.status(200).json({
+      users,
+      currentPage: page,
+      totalPages: Math.ceil(totalUsers / limit),
+      totalUsers,
+    });
+  } catch (error) {
+    res.status(400).json({ error: error });
+  }
+});
+
+
+
 module.exports = {
   registerUser,
   loginUser,
   getMe,
+  getAllUsers
 };
 
 
-console.log('JWT_SECRET:', process.env.JWT_SECRET);
-console.log('JWT_EXPIRES_IN:', process.env.JWT_EXPIRES_IN);
+// console.log('JWT_SECRET:', process.env.JWT_SECRET);
+// console.log('JWT_EXPIRES_IN:', process.env.JWT_EXPIRES_IN);

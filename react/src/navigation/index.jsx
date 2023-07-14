@@ -1,9 +1,8 @@
 import {BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Header, NotFound, SingleProduct } from '../components'
+import { Dashboard, Header, NotFound, SingleProduct, Footer } from '../components'
 import { Home, Cart, Login, Menu, PaymentSuccess, Register } from '../pages'
 import { useSelector } from 'react-redux'
 import { cartProducts } from '../redux/cart/cartSlice'
-import Footer from '../components/Footer'
 
 
 const Navigation = () => {
@@ -18,6 +17,7 @@ const Navigation = () => {
                 <Route path='/login' element={<Login/>} />
                 <Route path='/register' element={<Register/>} />
                 <Route path='/menu' element={<Menu/>} />
+                <Route path='/dashboard' element={<Dashboard/>} />
                 <Route path='/cart' element={<Cart/>} />
                 <Route path='/payment-success' element={<PaymentSuccess/>} />
                 <Route path='/products/:id' element={<SingleProduct/>}/>

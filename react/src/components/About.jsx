@@ -1,7 +1,7 @@
 import React from 'react';
 const About = () => {
   return (
-    <section id="about" className="bg-black  capitalize  scale-up-center text-white">
+    <section id="about" className="capitalize  scale-up-center text-white">
       <div className="p-12 md:p-24 grid grid-cols-1 md:grid-cols-2 items-center">
 
           <img src="./assets/about.png" alt="about" className=" w-full  h-full p-5 hidden md:block transition duration-300 hover:scale-105" />

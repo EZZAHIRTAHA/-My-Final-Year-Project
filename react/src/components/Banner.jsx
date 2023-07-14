@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 import { Link } from 'react-router-dom';
-
+import ParticlesBackground from './ParticlesBackground';
 const Banner = () => {
   return (
     <section className="banner w-full md:w-2/3 md:mt-5 mt-10 px-7 scale-up-center mx-auto relative flex items-center justify-between capitalize flex-col md:flex-row ">
