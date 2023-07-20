@@ -5,7 +5,7 @@ import {FaDev} from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <footer className="bg-black sticky mx-10  scale-up-center mt-10 border-[1px] mb-2 p-5 rounded-lg">
+    <footer className=" sticky mx-10  scale-up-center mt-10 border-[1px] mb-2 p-5 rounded-lg">
     <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
         <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-400 uppercase">Company</h2>

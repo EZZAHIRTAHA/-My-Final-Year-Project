@@ -44,7 +44,7 @@ const Header = ({cartCount}) => {
     
 
   return (
-    <nav id='header' className='bg-black text-white scale-up-center '>
+    <nav id='header' className=' text-white scale-up-center '>
         {showLogoutMessage && <div className=" p-4 mb-4 text-md scale-up-center text-white rounded-lg text-center bg-red-50 dark:bg-gray-800 " role="alert">
   <span className="font-semibold ">Logout successful. See you next time!</span>
 </div>}
