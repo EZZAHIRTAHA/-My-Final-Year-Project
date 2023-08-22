@@ -8,7 +8,7 @@ const Dashboard = () => {
 
   const [users, setUsers] = useState([])
 
-  
+  // users.map(user => console.log(user.name))
   
   const getUsers = async() => {
     const response = await axios.get(myUrl)
@@ -40,14 +40,7 @@ const Dashboard = () => {
                 </tr>
             </thead>
             <tbody>
-  {users.map((user, index) => (
-    <tr key={index} className="bg-white dark:bg-gray-800">
-      <td>{user.name}</td>
-      <td>{user.email}</td>
-      <td>{user.createdAt}</td>
-      <td>{user.updatedAt}</td> {/* Fixed typo here */}
-    </tr>
-  ))}
+  
 </tbody>
 
         </table>
