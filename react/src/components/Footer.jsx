@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className=" sticky mx-10  scale-up-center mt-10 border-[1px] mb-2 p-5 rounded-lg">
     <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
-        <div>
+        <div >
             <h2 className="mb-6 text-sm font-semibold text-gray-400 uppercase">Company</h2>
             <ul className="text-gray-300">
                 <li className="mb-4">
@@ -35,6 +35,9 @@ const Footer = () => {
                 </li>
             </ul>
         </div>
+            <div className="flex justify-end">
+                <img src="/assets/logo.svg" className='border border-yellow-500 animate-pulse rounded-full ml' alt="" />
+            </div>
     </div>
     <div className="py-6 px-4 bg-gray-950 md:flex md:items-center rounded-md mb-3 md:justify-between">
         <span className="text-sm text-gray-300 sm:text-center">© 2023 Taha's Food. All Rights Reserved.
